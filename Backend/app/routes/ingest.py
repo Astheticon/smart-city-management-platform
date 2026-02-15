@@ -39,8 +39,8 @@ def ingest_sensor_data(payload: SensorPayload):
         priority=alert.priority,
         message=alert.message,
         value=alert.value
-    )
-    db.add(alert_record)
+        )
+        db.add(alert_record)
 
 
     db.commit()

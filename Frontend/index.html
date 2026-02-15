@@ -5,10 +5,43 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Smart City Management Platform</h1>
-    <div id="prediction"></div>
-    <div id="alerts"></div>
+    <h1>Smart City Command Center</h1>
 
-    <script src="script.js"></script>
+<div class="dashboard">
+    <div class="card">
+        <h3>Vehicles</h3>
+        <span id="vehicleCount">--</span>
+    </div>
+
+    <div class="card">
+        <h3>AQI</h3>
+        <span id="aqi">--</span>
+    </div>
+
+    <div class="card">
+        <h3>Temperature</h3>
+        <span id="temperature">--</span>
+    </div>
+
+    <div class="card">
+        <h3>Humidity</h3>
+        <span id="humidity">--</span>
+    </div>
+
+    <div class="card">
+        <h3>Traffic Density</h3>
+        <span id="trafficDensity">--</span>
+    </div>
+</div>
+
+<h2>Live Prediction</h2>
+<div id="prediction"></div>
+
+<h2>Recent Alerts</h2>
+<div id="alerts"></div>
+
+<script src="script.js"></script>
+
+    
 </body>
 </html>
