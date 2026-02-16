@@ -23,26 +23,33 @@ function updateDashboard(data) {
     document.getElementById("trafficDensity").innerText = data.traffic_density ?? "--";
 }
 
-// Update prediction display
+// Update prediction
 function updatePrediction(data) {
     const predictionDiv = document.getElementById("prediction");
 
-    if (!data || !data.prediction) {
-        predictionDiv.innerHTML = "<strong>Traffic Congestion Level:</strong> N/A";
+    if (!data || data.traffic_density == null) {
+        predictionDiv.className = "prediction";
+        predictionDiv.innerText = "N/A";
         return;
     }
 
-    const level = data.prediction.traffic_congestion_level;
+    const density = data.traffic_density;
+    let level = "LOW";
 
-    predictionDiv.innerHTML = `
-        <strong>Traffic Congestion Level:</strong> 
-        <span style="font-size: 20px; font-weight: bold;">
-            ${level}
-        </span>
-    `;
+    if (density < 40) {
+        level = "LOW";
+    } else if (density < 70) {
+        level = "MEDIUM";
+    } else {
+        level = "HIGH";
+    }
+
+    predictionDiv.className = "prediction";
+    predictionDiv.classList.add(level.toLowerCase());
+    predictionDiv.innerText = level;
 }
 
-// Update alerts panel
+// Update alerts
 function updateAlerts(alerts) {
     const container = document.getElementById("alerts");
     container.innerHTML = "";
@@ -54,23 +61,27 @@ function updateAlerts(alerts) {
 
     alerts.forEach(alert => {
         const div = document.createElement("div");
-        div.classList.add("alert");
+        div.className = "alert-card";
 
-        if (alert.priority === "HIGH") div.classList.add("high");
-        if (alert.priority === "MEDIUM") div.classList.add("medium");
-        if (alert.priority === "LOW") div.classList.add("low");
+        if (alert.priority === "HIGH") {
+            div.classList.add("alert-high");
+        } else if (alert.priority === "MEDIUM") {
+            div.classList.add("alert-medium");
+        } else {
+            div.classList.add("alert-low");
+        }
 
         div.innerHTML = `
             <strong>${alert.alert_type}</strong><br>
             ${alert.message}<br>
-            <small>${alert.timestamp}</small>
+            <small>${alert.timestamp ?? ""}</small>
         `;
 
         container.appendChild(div);
     });
 }
 
-// Refresh all dashboard data
+// Refresh dashboard
 async function refreshData() {
     try {
         const latest = await fetchLatest();

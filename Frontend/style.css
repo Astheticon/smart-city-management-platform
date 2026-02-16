@@ -1,136 +1,97 @@
-/* ===== GLOBAL ===== */
-
 body {
     margin: 0;
     padding: 30px;
     font-family: 'Segoe UI', Arial, sans-serif;
     background: linear-gradient(135deg, #0f172a, #1e293b);
-    color: #ffffff;
+    color: white;
 }
 
 h1 {
     text-align: center;
-    font-size: 32px;
     margin-bottom: 30px;
-    letter-spacing: 1px;
 }
 
 h2 {
     margin-top: 40px;
-    margin-bottom: 15px;
     border-bottom: 2px solid #334155;
     padding-bottom: 5px;
 }
 
-/* ===== DASHBOARD GRID ===== */
-
+/* Dashboard Grid */
 .dashboard {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     gap: 20px;
 }
 
-/* ===== CARD STYLE ===== */
-
+/* Cards */
 .card {
     background: #1e293b;
     padding: 25px;
     border-radius: 12px;
     text-align: center;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 0 25px rgba(0, 255, 255, 0.3);
+    box-shadow: 0 0 15px rgba(0,0,0,0.4);
 }
 
 .card h3 {
-    margin-bottom: 10px;
-    font-size: 16px;
     color: #94a3b8;
 }
 
 .card span {
-    font-size: 26px;
+    font-size: 28px;
     font-weight: bold;
     color: #38bdf8;
 }
 
-/* ===== PREDICTION ===== */
-
-#prediction {
+/* Prediction */
+.prediction {
     background: #1e293b;
-    padding: 20px;
-    border-radius: 10px;
-    font-size: 18px;
-    margin-top: 15px;
+    padding: 25px;
+    border-radius: 12px;
     text-align: center;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
-}
-
-/* ===== ALERTS ===== */
-
-#alerts {
+    font-size: 22px;
     margin-top: 15px;
 }
 
-.alert {
-    padding: 15px;
-    border-radius: 8px;
-    margin-bottom: 12px;
-    font-size: 14px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+.prediction.low {
+    background: #14532d;
+    border-left: 6px solid #22c55e;
 }
 
-/* Alert Colors */
-
-.alert.high {
-    background: #7f1d1d;
-    border-left: 6px solid #ef4444;
-}
-
-.alert.medium {
+.prediction.medium {
     background: #78350f;
     border-left: 6px solid #f59e0b;
 }
 
-.alert.low {
-    background: #365314;
-    border-left: 6px solid #22c55e;
+.prediction.high {
+    background: #7f1d1d;
+    border-left: 6px solid #ef4444;
 }
 
-/* ===== SCROLLABLE ALERT PANEL ===== */
-
+/* Alerts */
 #alerts {
+    margin-top: 15px;
     max-height: 300px;
     overflow-y: auto;
 }
 
-/* ===== SCROLLBAR STYLE ===== */
-
-#alerts::-webkit-scrollbar {
-    width: 8px;
+.alert-card {
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 12px;
 }
 
-#alerts::-webkit-scrollbar-track {
-    background: #0f172a;
+.alert-high {
+    background: #7f1d1d;
+    border-left: 6px solid #ef4444;
 }
 
-#alerts::-webkit-scrollbar-thumb {
-    background: #334155;
-    border-radius: 4px;
+.alert-medium {
+    background: #78350f;
+    border-left: 6px solid #f59e0b;
 }
 
-/* ===== STATUS GLOW ANIMATION ===== */
-
-.alert.high {
-    animation: pulse 1.5s infinite;
-}
-
-@keyframes pulse {
-    0% { box-shadow: 0 0 5px #ef4444; }
-    50% { box-shadow: 0 0 20px #ef4444; }
-    100% { box-shadow: 0 0 5px #ef4444; }
+.alert-low {
+    background: #365314;
+    border-left: 6px solid #22c55e;
 }
